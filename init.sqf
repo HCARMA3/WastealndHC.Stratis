@@ -119,11 +119,11 @@ if (hasInterface || isServer) then
 };
 
 if (!(isServer)) then 
-/*{
+{
 ClientPreComp_AnnounceMessages = compileFinal preprocessFileLineNumbers "addons\announceMessages\client_AnnounceMessages.sqf";
 
 [] call ClientPreComp_AnnounceMessages;
-};*/
+};
 
 // Server restart message
 "RM_DISPLAYTEXT_PUBVAR" addPublicVariableEventHandler {(_this select 1) spawn BIS_fnc_dynamicText;};
