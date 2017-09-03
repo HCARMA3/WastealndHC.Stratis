@@ -9,13 +9,13 @@ if (!isServer) exitWith {};
 MainMissions =
 [
 	// Mission filename, weight
-	["mission_ArmedDiversquad", 0.5],
+	["mission_ArmedDiversquad", 0.4],
 	["mission_Coastal_Convoy", 0.5],
 	["mission_Convoy", 0.5],
 	["mission_Hackers", 0.2],
-	["mission_HostileHeliFormation", 0.2],
-	["mission_APC", 0.3],
-	["mission_LightArmVeh", 0.4],
+	["mission_HostileHeliFormation", 0.4],
+	["mission_APC", 0.4],
+	["mission_LightArmVeh", 0.5],
 	["mission_ArmedHeli", 0.5],
 	["mission_CivHeli", 0.6],
 	["mission_Smugglers", 0.6]
@@ -23,7 +23,7 @@ MainMissions =
 
 SideMissions =
 [
-	["mission_HostileHelicopter", 0.3],
+	["mission_HostileHelicopter", 0.4],
 	["mission_HostileJet", 0.5],
 	["mission_MiniConvoy", 0.5],
 	//["mission_SunkenSupplies", 0.1],
@@ -40,7 +40,7 @@ MoneyMissions =
 	["mission_MoneyShipment", 0.6],
 	["mission_SunkenTreasure", 0.2],
 	["mission_drugsRunners", 0.5],
-	["mission_Roadblock", 0.4],
+	["mission_Roadblock", 0.5],
 	["mission_TownInvasion", 0.6]
 ];
 missionType_water =
@@ -52,14 +52,14 @@ missionType_water =
 ];
 superMissions =
 [
-	["mission_artyPatrol", 0.1],
-	["mission_SupplyDrop", 0.3],	
+	["mission_artyPatrol", 0.5],
+	["mission_SupplyDrop", 0.5],	
 	["mission_SmugglerPlane", 0.4],
-	["mission_ArmedDiversquad", 0.8],
-	["mission_Coastal_Convoy", 0.9],
-	["mission_SunkenSupplies", 1.0],
+	["mission_ArmedDiversquad", 0.3],
+	["mission_Coastal_Convoy", 0.3],
+	["mission_SunkenSupplies", 0.4],
 	["mission_SunkenTreasure", 0.5],
-	["mission_Jaws", 0.1]
+	["mission_Jaws", 0.4]
 ];
 
 MissionSpawnMarkers = (allMapMarkers select {["Mission_", _x] call fn_startsWith}) apply {[_x, false]};

@@ -41,12 +41,12 @@ sleep 60; //Wait in seconds before the credits start after player IS ingame
  
 _role1 = "Bem-vindos a|Welcome to";
 _role1names = ["HC Corp A3Wasteland Server"];
-//_role2 = "Suporte aos jogadores e fórum|Player support and forum @";
-//_role2names = ["hccorp.com.br"];
-//_role3 = "Servidor Discord|Discord server @";
-//_role3names = ["discord.hccorp.com.br"];
-//_role4 = "Servidor TeamSpeak|TeamSpeak server @";
-//_role4names = ["ts.hccorp.com.br"];
+_role2 = "Horários do restart";
+_role2names = ["08, 12, 16, 20, 00, 04 horas"];
+_role3 = "Ciclo dia e noite";
+_role3names = ["3 horas dia e 1 hora noite por sessão"];
+_role4 = "Mods e addons liberados";
+_role4names = ["Há mods e addons liberados neste servidor caso queira usa-los. Como o enhaced movement."];
 _role2 = "Servidor TeamSpeak|TeamSpeak server @";
 _role2names = ["HC.stchost.com.br"];
  
@@ -71,7 +71,7 @@ _role2names = ["HC.stchost.com.br"];
 	//The list below should have exactly the same amount of roles as the list above
 	[_role1, _role1names],
 	[_role2, _role2names]
-//	[_role2, _role2names],
-//	[_role3, _role3names],
-//	[_role4, _role4names]   //make SURE the last one here does NOT have a , at the end
+	[_role2, _role2names],
+	[_role3, _role3names],
+	[_role4, _role4names]   //make SURE the last one here does NOT have a , at the end
 ];
