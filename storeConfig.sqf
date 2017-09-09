@@ -722,6 +722,11 @@ backpackArray = compileFinal str
 
 genItemArray = compileFinal str
 [
+	["Radio AN/PRC-154 2k(rifleman)", "tf_anprc154_3", 250, "item"],
+    ["Radio AN/PRC148-JEM 5k(personal)", "tf_anprc148jem_4", 450, "item"],
+    ["Radio AN/PRC-155 (20k)", "tf_anprc155", 1000, "backpack"],
+    ["Radio AN/PRC-155 (20k)Coyote", "tf_anprc155_coyote", 1200, "backpack"],
+    ["Radio AN/ARC-164 40k(airborne)", "tf_anarc164", 1500, "backpack"],
 	["rádio", "ItemRadio", 50, "item"],
 	["UAV Terminal (NATO)", "B_UavTerminal", 1650, "gps"],
 	["UAV Terminal (CSAT)", "O_UavTerminal", 1650, "gps"],
