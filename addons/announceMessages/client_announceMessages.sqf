@@ -12,8 +12,18 @@ private ["_MessagesToAnnounceStringArray","_DisplayTimesCheckArray","_MinimumSle
 	["Testmessage1 here!", 60], ["This is testmessage 2 displayed every 90 seconds!", 90]
 */
 
-_MessagesToAnnounceStringArray = [["Precisa de suporte? TS3: HC.stchost.com.br ", 750], ["Este servidor restarta a cada 4 horas para manter o desempenho do cliente", 1270],  
-["Há stores clandestinas não marcadas no mapa. Se achar alguma, aproveite!", 900], ["Hacker no servidor? Jogador teleportando? Avise a ADM chamando pelo chat global ou entrando no TS", 1360], [".", 1450]];
+_MessagesToAnnounceStringArray = 
+
+[
+["Precisa de suporte? TS3: HC.stchost.com.br", 300],
+["Este servidor restarta a cada 4 horas para garantir o desempenho do cliente", 600],
+//["Uso de Hack/Meios ilícitos= BAN PERMA", 1400],
+//["Este servidor é monitorado por vários admins mesmo fora do jogo", 1200],
+//["Dúvidas,reclamações e suporte, entre no TS3 (HC.stchost.com.br)", 1500]
+["Há Gun Stores Clandestinas não marcadas no mapa que mudam de posição a cada restart.Se acha-las,aproveite.", 900]
+
+];
+
 if ((count _MessagesToAnnounceStringArray) == 0) exitWith 
 	{
 	diag_log format ["** Automatic message announcement not used, the array is empty. **"];
@@ -64,11 +74,10 @@ while {(true)} do
 		_CompiledMessageDisplayString = "";
 		
 			{
-			player globalChat CompiledMessageDisplayString;
+			_CompiledMessageDisplayString = _CompiledMessageDisplayString + _x;
 			} forEach _DisplayReadyMessageStringsArray;
 		
-		//cutText [_CompiledMessageDisplayString, "PLAIN DOWN", 2, false];
-		hint format ["%1", CompiledMessageDisplayString, "plain down"];
+		cutText [_CompiledMessageDisplayString, "PLAIN DOWN", 2, false];
 		};
 	
 	sleep _MinimumSleepTimeScalar;
