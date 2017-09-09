@@ -54,7 +54,6 @@ switch (true) do
 		_player addWeapon "hgun_ACPC2_F";
 		_player addMagazine "9Rnd_45ACP_Mag";
 		_player addItem "Medikit";
-		_player addItem "FirstAidKit";
 		_player addItem "SmokeShell";
 	};
 	case (["_engineer_", typeOf _player] call fn_findString != -1):
