@@ -35,9 +35,9 @@ briefing = 0; // if 0, skip Continue button
 
 // A3W UI color (default = sky blue)
 
-#define A3W_UICOLOR_R  0.18 // default = 0.25
-#define A3W_UICOLOR_G  0.59 // default = 0.51
-#define A3W_UICOLOR_B  1.05 // default = 0.96
+#define A3W_UICOLOR_R  0.35 // default = 0.25
+#define A3W_UICOLOR_G  0.58 // default = 0.51
+#define A3W_UICOLOR_B  0.91 // default = 0.96
 
 //Dialog includes
 

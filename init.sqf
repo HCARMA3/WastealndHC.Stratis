@@ -118,13 +118,6 @@ if (hasInterface || isServer) then
 	//[] ExecVM "scarCODE\ServerInfoMenu\sqf\initLocal.sqf"; // scarCODE ServerInfoMenu
 };
 
-if (!(isServer)) then 
-/*{
-ClientPreComp_AnnounceMessages = compileFinal preprocessFileLineNumbers "addons\announceMessages\client_AnnounceMessages.sqf";
-
-[] call ClientPreComp_AnnounceMessages;
-};*/
-
 // Server restart message
 "RM_DISPLAYTEXT_PUBVAR" addPublicVariableEventHandler {(_this select 1) spawn BIS_fnc_dynamicText;};
 
@@ -135,3 +128,10 @@ ClientPreComp_AnnounceMessages = compileFinal preprocessFileLineNumbers "addons\
 	"thisTrigger setTriggerTimeout [30,30,30,false]",
 	"{if (markerShape _x == 'POLYLINE') then {deleteMarker _x}} forEach allMapMarkers"
 ];*/
+if (!(isServer)) then
+
+{
+ClientPreComp_AnnounceMessages = compileFinal preprocessFileLineNumbers "addons\announceMessages\client_AnnounceMessages.sqf";
+
+[] call ClientPreComp_AnnounceMessages;
+};
