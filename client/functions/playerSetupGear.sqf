@@ -24,8 +24,8 @@ sleep 0.1;
 // Add GPS
 _player linkItem "ItemGPS";
 
-// Remove Radio
-_player unlinkItem "ItemRadio";
+// Add Radio
+_player linkItem "ItemRadio";
 
 // Remove NVG
 if (hmd _player != "") then { _player unlinkItem hmd _player };
@@ -38,7 +38,7 @@ _player removeItems "Medikit";
 _player linkItem "NVGoggles";
 
 // Add Backpack
-_player addBackpack "B_AssaultPack_rgr";
+_player addBackpack "B_Kitbag_cbr";
 
 switch (true) do
 {
@@ -54,6 +54,7 @@ switch (true) do
 		_player addWeapon "hgun_ACPC2_F";
 		_player addMagazine "9Rnd_45ACP_Mag";
 		_player addItem "Medikit";
+		_player addItem "FirstAidKit";
 		_player addItem "SmokeShell";
 	};
 	case (["_engineer_", typeOf _player] call fn_findString != -1):
