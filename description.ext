@@ -48,7 +48,7 @@ briefing = 0; // if 0, skip Continue button
 #include "client\items\warchest\dialog.hpp"
 #include "client\items\atm\atm_gui.hpp"
 #include "client\actions\gui.hpp"
-#include "addons\far_revive\revive_gui.hpp"
+#include "addons\far_revive\reviveBlank_gui.hpp"
 #include "client\systems\playerMenu\dialog\player_settings.hpp"
 #include "client\systems\groups\dialog\groupManagement.hpp"
 #include "client\systems\gunStore\dialog\gunshop_settings.hpp"
@@ -65,15 +65,16 @@ briefing = 0; // if 0, skip Continue button
 #include "client\systems\adminPanel\dialog\objectSearch.hpp"
 #include "client\systems\playerMenu\dialog\respawn_dialog.hpp"
 #include "client\systems\playerMenu\dialog\teamkill_dialog.hpp"
+#include "client\systems\killFeed\killFeedMenu_gui.hpp"
 #include "addons\outlw_magrepack\config.hpp"
 #include "addons\gui\gui.hpp"
 #include "addons\parking\list_simple_menu.hpp"
-//#include "addons\CHVD\dialog.hpp"
+#include "addons\CHVD\dialog.hpp"
 
 #include "addons\JTS_PM\PM_Compact.hpp"
 #include "addons\TOParmaInfo\dialog\TOParmaInfo_dialog.hpp"
-//#include "infiSTAR_AdminMenu.hpp"
 #include "addons\taw_vd\dialog.hpp"
+//#include "addons\taw_vd\dialog.hpp"
 #include "addons\UniformPainter\dialog\UniformPainter_mainMenu.hpp"
 #include "addons\VehiclePainter\dialog\VehiclePainter_mainMenu.hpp"
 #include "addons\APOC_Airdrop_Assistance\APOC_Airdrop_dialog.hpp"
@@ -107,11 +108,11 @@ class CfgDebriefing
 class RscTitles
 {
 	#include "addons\lsd_nvg\RscTitles.hpp"
-	//#include "infiSTAR_AdminMenu.hpp"
 	#include "client\systems\hud\dialog\hud.hpp"
 	#include "client\systems\playerMenu\dialog\welcome.hpp"
 	#include "client\systems\scoreboard\score_gui.hpp"
-	//#include "addons\far_revive\revive_gui.hpp"
+	#include "client\systems\killFeed\killFeed_gui.hpp"
+	#include "addons\far_revive\revive_gui.hpp"
 };
 
 class CfgFunctions
@@ -122,8 +123,8 @@ class CfgFunctions
 		#include "server\CfgFunctions.hpp"
 	};
 
-	#include "addons\taw_vd\CfgFunctions.hpp"
-	//#include "addons\CHVD\CfgFunctions.hpp"
+	//#include "addons\taw_vd\CfgFunctions.hpp"
+	#include "addons\CHVD\CfgFunctions.hpp"
 };
 
 class CfgNotifications
@@ -135,19 +136,6 @@ class CfgRemoteExec // applies only to clients
 {
 	class Functions
 	{
-		//Advanced Sling Loading
-		class ASL_Pickup_Ropes		{ allowedTargets=0; }; 
-		class ASL_Deploy_Ropes_Index	{ allowedTargets=0; }; 
-		class ASL_Rope_Set_Mass		{ allowedTargets=0; }; 
-		class ASL_Extend_Ropes		{ allowedTargets=0; }; 
-		class ASL_Shorten_Ropes		{ allowedTargets=0; }; 
-		class ASL_Release_Cargo		{ allowedTargets=0; }; 
-		class ASL_Retract_Ropes		{ allowedTargets=0; }; 
-		class ASL_Deploy_Ropes		{ allowedTargets=0; }; 
-		class ASL_Attach_Ropes		{ allowedTargets=0; }; 
-		class ASL_Drop_Ropes		{ allowedTargets=0; }; 
-		class ASL_Hint			{ allowedTargets=1; }; 
-		class ASL_Hide_Object_Global	{ allowedTargets=2; };
 		#ifndef A3W_DEBUG
 		mode = 1; // 0 = block all, 1 = whitelist, 2 = allow all
 		#else

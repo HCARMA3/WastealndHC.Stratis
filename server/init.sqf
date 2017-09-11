@@ -18,6 +18,8 @@ if (isServer) then
 {
 	vChecksum = compileFinal str call A3W_fnc_generateKey;
 
+	//addMissionEventHandler ["EntityRespawned", { diag_log format ["test123 Respawned %1", _this] }];
+
 	// Corpse deletion on disconnect if player alive and player saving on + inventory save
 	addMissionEventHandler ["HandleDisconnect",
 	{
@@ -48,8 +50,9 @@ if (isServer) then
 				[_unit] spawn dropPlayerItems;
 				[_uid, "deathCount", 1] call fn_addScore;
 				_unit setVariable ["A3W_handleDisconnect_name", _name];
+				_unit setVariable ["A3W_handleDisconnect_UID", _uid];
 				_unit setVariable ["A3W_deathCause_local", ["bleedout"]];
-				[_unit, objNull, objNull, true] call A3W_fnc_registerKillScore; // killer retrieved via FAR_killerPrimeSuspectData
+				[_unit, objNull, objNull, true] call A3W_fnc_registerKillScore; // killer retrieved via FAR_killerUnit
 			}
 			else
 			{
@@ -178,10 +181,10 @@ if (isServer) then
 		"A3W_bountyLifetime",
 		"A3W_maxMoney",
 		"A3W_healthTime",
+		"A3W_restartServer",
 		"A3W_hungerTime",
 		"A3W_thirstTime",
 		"A3W_fastMovementLog",
-		"A3W_restartServer",
 		"A3W_fastMovementLogDist",
 		"A3W_fastMovementLoopTime",
 		"A3W_reservedSlots",
@@ -198,10 +201,10 @@ if (isServer) then
 	["A3W_missionEH_fix", "onPlayerDisconnected"] call BIS_fnc_removeStackedEventHandler;
 };
 
+serverCommandPassword = ["A3W_restartServer"] call getPublicVar;
 _playerSavingOn = ["A3W_playerSaving"] call isConfigOn;
 _baseSavingOn = ["A3W_baseSaving"] call isConfigOn;
 _boxSavingOn = ["A3W_boxSaving"] call isConfigOn;
-serverCommandPassword = ["A3W_restartServer"] call getPublicVar;
 _staticWeaponSavingOn = ["A3W_staticWeaponSaving"] call isConfigOn;
 _warchestSavingOn = ["A3W_warchestSaving"] call isConfigOn;
 _warchestMoneySavingOn = ["A3W_warchestMoneySaving"] call isConfigOn;

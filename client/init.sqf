@@ -130,6 +130,7 @@ call compile preprocessFileLineNumbers "client\functions\setupClientPVars.sqf";
 
 //client Executes
 A3W_scriptThreads pushBack execVM "client\systems\hud\playerHud.sqf";
+A3W_scriptThreads pushBack execVM "client\systems\killFeed\killFeed.sqf";
 
 if (["A3W_survivalSystem"] call isConfigOn) then
 {
@@ -163,7 +164,6 @@ A3W_scriptThreads pushBack execVM "addons\fpsFix\vehicleManager.sqf";
 //A3W_scriptThreads pushBack execVM "addons\Lootspawner\LSclientScan.sqf";
 [] execVM "client\functions\drawPlayerIcons.sqf";
 [] execVM "addons\camera\functions.sqf";
-[] execVM "client\functions\globalChatMessages.sqf";
 [] execVM "addons\UAV_Control\functions.sqf";
 
 call compile preprocessFileLineNumbers "client\functions\generateAtmArray.sqf";

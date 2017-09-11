@@ -24,16 +24,16 @@ if ((getPlayerUID player) call isAdmin) then
 		};
 
 		(findDisplay 27910) closeDisplay 0; // ReviveBlankGUI_IDD
-		(findDisplay 27911) closeDisplay 0; // ReviveGUI_IDD
+		//(findDisplay 27911) closeDisplay 0; // ReviveGUI_IDD
 
 		hint "You are now invulnerable";
-		if (!isNil "notifyAdminMenu") then { ["godmodeHigh", "On"] call notifyAdminMenu };
+		if (!isNil "notifyAdminMenu") then { ["godModeNoAnnounce", "On"] call notifyAdminMenu };
 	}
 	else
 	{
 		player allowDamage true;
 		player setVariable ["isAdminInvulnerable", false, true];
 		hint "You are no longer invulnerable";
-		if (!isNil "notifyAdminMenu") then { ["godmodeHigh", "Off"] call notifyAdminMenu };
+		if (!isNil "notifyAdminMenu") then { ["godModeNoAnnounce", "Off"] call notifyAdminMenu };
 	};
 };
