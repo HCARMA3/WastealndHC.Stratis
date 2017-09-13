@@ -34,6 +34,8 @@ switch (true) do
 		_obj addMagazineCargoGlobal ["UGL_FlareWhite_F", 4];
 		_obj addMagazineCargoGlobal ["11Rnd_45ACP_Mag", 4];
 		_obj addMagazineCargoGlobal ["30Rnd_556x45_Stanag_Tracer_Yellow", 4];
+		_obj addMagazineCargoGlobal ["Laserbatteries", 1];
+		_obj addWeaponCargoGlobal ["Laserdesignator", 1];
 		_obj addMagazineCargoGlobal ["10Rnd_762x54_Mag", 4];
 		_obj addMagazineCargoGlobal ["9Rnd_45ACP_Mag", 4];
 		_obj addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 4];
@@ -54,6 +56,7 @@ _adjustZ = switch (true) do
 {
 	case (_objClass == "Land_Scaffolding_F"):         { -3 };
 	case (_objClass == "Land_Canal_WallSmall_10m_F"): { 3 };
+	case (_objClass == "Land_Mil_WallBig_4m_F"):   { 3 };
 	case (_objClass == "Land_Canal_Wall_Stairs_F"):   { 3 };
 	default                                           { 0 };
 };
@@ -61,5 +64,6 @@ _adjustZ = switch (true) do
 _pos = getPosATL _obj;
 _pos set [2, (_pos select 2) + _adjustZ];
 _obj setPos _pos;
+//_obj setVariable ["R3F_LOG_disabled",false,true];
 
 [_obj] call basePartSetup;

@@ -28,6 +28,8 @@ if !(_player getUnitTrait "engineer") then
 	_player setUnitTrait ["medic",true];
 };
 
+//AJ Custom Camera Functions
+[] spawn fn_cameracheck;
 enableSentences false;
 
 removeAllWeapons _player;

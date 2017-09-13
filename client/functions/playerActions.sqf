@@ -17,7 +17,11 @@
 	[format ["<img image='client\icons\playerMenu.paa' color='%1'/> <t color='%1'>[</t>Player Menu<t color='%1'>]</t>", "#FF8000"], "client\systems\playerMenu\init.sqf", [], -10, false], //, false, "", ""],
 
 	[format ["<img image='addons\spawnBeaconDetector\spawnBeaconDetector.paa' color='%1'/> <t color='%1'>[</t>Airdrop Menu<t color='%1'>]</t>", "#B22222"], "[] execVM 'addons\APOC_Airdrop_Assistance\APOC_cli_startAirdrop.sqf'", [], -10, false], //, false, "", ""],
-
+	//smokescreen tank (commander)
+	["Reload Smokescreen ($100)", "addons\aj\smokescreen\fn_aj_c_reloadsmokescreen.sqf", [5,1], -360, false, false, "", "({vehicle player isKindOf _x} count ['Tank','Wheeled_APC_F'] > 0) && ( player == commander vehicle player) && !(isengineon vehicle player)"],
+	//smokescreen boat (driver)
+	["Reload Smokescreen ($100)", "addons\aj\smokescreen\fn_aj_c_reloadsmokescreen_boat.sqf", [5,1], -360, false, false, "", "vehicle player isKindOf 'Boat_Armed_01_base_F' && ( player == driver vehicle player) && !(isengineon vehicle player)"],
+	
 	["<img image='client\icons\money.paa'/> Pickup Money", "client\actions\pickupMoney.sqf", [], 1, false, false, "", "{_x getVariable ['owner', ''] != 'mission'} count (player nearEntities ['Land_Money_F', 5]) > 0"],
 
 	["<img image='addons\buryDeadBody\buryDeadBody.paa'/> Bury Dead Body", "addons\buryDeadBody\buryDeadBody.sqf", [], 1.1, false, false, "", "!(([allDeadMen,[],{player distance _x},'ASCEND',{((player distance _x) < 2) && !(_x getVariable ['buryDeadBodyBurried',false])}] call BIS_fnc_sortBy) isEqualTo [])"],

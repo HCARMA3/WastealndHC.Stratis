@@ -66,6 +66,7 @@ staticHeliList =
 staticPlaneList =
 [
 	"I_Plane_Fighter_03_dynamicLoadout_F",
+	"C_Plane_Civil_01_racing_F",
 	"C_Plane_Civil_01_F"
 ];
 

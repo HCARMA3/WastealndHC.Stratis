@@ -231,14 +231,51 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 
 			_object setDir (if (_object isKindOf "Plane") then { markerDir _marker } else { random 360 });
 
-			_isDamageable = !(_object isKindOf "ReammoBox_F"); // ({_object isKindOf _x} count ["AllVehicles", "Lamps_base_F", "Cargo_Patrol_base_F", "Cargo_Tower_base_F"] > 0);
+            //WHITELIST: AllowDamage FALSE for all Crates, Buildings, Walls, Shelters, Lamps(unable to shoot out as a player :/ But better as fallen lamps)... Not for cars, and other small things like a drill, monitor...
+			_isDamageable = !({_object isKindOf _x} count ["Building", "Constructions_base_F", "TargetBase", "ReammoBox_F"] > 0);
+            //BLACKLIST: AllowDamage TRUE for towers, generator(Base Locker), Statics(Not necessarry, as not part of "Building")... Not for Tent(Spawn Beacon), as this will not spawn, just an item in the inventory
+            if ({_object isKindOf _x} count ["Cargo_Patrol_base_F", "Cargo_Tower_base_F", "Land_Device_assembled_F"] > 0) then 
+            {
+                _isDamageable = true;
+            };
 
 			[_object] call vehicleSetup;
 			_object allowDamage _isDamageable;
 			_object setVariable ["allowDamage", _isDamageable, true];
+            
+            //Set Simulation Global to FALSE for all Crates, Buildings, Walls, Shelters, Lamps... NOT for Pop-Up Targets!
+            // if ({_object isKindOf _x} count ["Building", "Constructions_base_F", "ReammoBox_F"] > 0) then 
+            // {
+                // [_object, false] call fn_enableSimulationGlobal;
+            // };
+            //REMOVED DUE TO PROBLEMS WITH NETWORK SYNC BETWEEN CLIENTS :/
 
 			clearBackpackCargoGlobal _object;
-
+			
+			// this switch is only there at aj mission - removed in vanilla a3w
+			switch (true) do
+			{				
+				case (_object isKindOf "FlagPole_F"):
+				{
+					_object setFlagTexture "image/out.jpg";
+				};
+                
+                case (_object isKindOf "Land_Sacks_goods_F"):
+				{
+					_object setVariable ["food",50, true];
+				};
+				
+                case (_object isKindOf "Land_BarrelWater_F"):
+				{
+					_object setVariable ["water",50, true];
+				};
+                
+				// Add default password to baselocker, safe and doorlocks.
+				case ({_object isKindOf _x} count ["Land_DataTerminal_01_F", "Land_Device_assembled_F", "Box_IDAP_Equip_F"] > 0):
+				{
+					_object setVariable ["password", "0000", true];
+				};	
+			};
 			// don't need this anymore at all
 			/*switch (true) do
 			{

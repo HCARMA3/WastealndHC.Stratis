@@ -69,6 +69,12 @@ weaponDisassembledEvent = "client\functions\weaponDisassembledEvent.sqf" call mf
 deleteBeacon = "client\items\beacon\deleteBeacon.sqf" call mf_compile;
 applyPlayerTexture = "client\functions\applyPlayerTexture.sqf" call mf_compile; // Added for persistent uniform textures
 
+//aj config
+fn_cameracheck = "addons\cameracheck\cameracheck.sqf" call mf_compile;
+fn_checkBaseLock = "addons\aj\antiglitch\fn_aj_c_checkbaselock.sqf" call mf_compile;
+fnc_safe_vehicle_exit = "addons\aj\antiglitch\fn_aj_c_safe_vehicle_exit.sqf" call mf_compile;
+fnc_markBaselockers = "addons\aj\fnc_aj_c_markBaselockers.sqf" call mf_compile;
+
 // Player details and actions
 loadPlayerMenu = "client\systems\playerMenu\init.sqf" call mf_compile;
 playerSpawn = "client\functions\playerSpawn.sqf" call mf_compile;

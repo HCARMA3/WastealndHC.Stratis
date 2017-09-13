@@ -10,11 +10,16 @@ if(R3F_LOG_mutex_local_verrou) exitWith {
 	player globalChat STR_R3F_LOG_mutex_action_en_cours;
 };
 
-private["_locking", "_object", "_lockState", "_lockDuration", "_stringEscapePercent", "_iteration", "_unlockDuration", "_totalDuration", "_poiDist", "_poiMarkers", "_checks", "_success", "_nearbyStorage"];
+private["_locking", "_object", "_lockState", "_lockDuration", "_stringEscapePercent", "_iteration", "_unlockDuration", "_totalDuration","_poiDist", "_poiMarkers", "_checks", "_success","_IsProtected","_IsAllowed"];
 
 _object = _this select 0;
 _lockState = _this select 3;
 
+_IsProtected = false;
+_IsAllowed = false;
+
+_baseradius = ["A3W_AJBaseRadius", 60] call getPublicVar;
+						
 _totalDuration = 0;
 _stringEscapePercent = "%";
 
@@ -26,11 +31,9 @@ switch (_lockState) do
 		_totalDuration = 5;
 		//_lockDuration = _totalDuration;
 		//_iteration = 0;
-
 		// Points of interest
 		_poiDist = ["A3W_poiObjLockDistance", 100] call getPublicVar;
-		_poiMarkers = allMapMarkers select {markerType _x == "Empty" && {[["GenStore","GunStore","VehStore","Mission_","ForestMission_","LandConvoy_","Parking"], _x] call fn_startsWith}};
-		_nearbyStorage = nearestObjects [player, ["Land_PaperBox_open_full_F", "Land_Pallet_MilBoxes_F", "Land_PaperBox_open_empty_F", "Land_PaperBox_closed_F"], _poiDist] select {_x getVariable ["is_storage", false]};
+		_poiMarkers = allMapMarkers select {markerType _x == "Empty" && {[["GenStore","GunStore","VehStore","Mission_","ForestMission_","LandConvoy_"], _x] call fn_startsWith}};
 
 		if ({(getPosASL player) vectorDistance (ATLtoASL getMarkerPos _x) < _poiDist} count _poiMarkers > 0) exitWith
 		{
@@ -38,13 +41,19 @@ switch (_lockState) do
 			[format ["You are not allowed to lock objects within %1m of stores and mission spawns", _poiDist], 5] call mf_notify_client;
 			R3F_LOG_mutex_local_verrou = false;
 		};
-
-		if !(_nearbyStorage isEqualTo []) exitWith
-		{
+		
+		if ( _object iskindof "Land_Device_assembled_F" && 
+		{  //use lazy evaluation for performance reasons - see https://community.bistudio.com/wiki/a_%26%26_b
+		count (nearestobjects[player,["Land_Device_assembled_F"], (_baseradius * 2)]) != 1   // count =1 -> should only be the one base locker we are using 
+		}
+		) exitwith {
 			playSound "FD_CP_Not_Clear_F";
-			[format ["You are not allowed to lock objects within %1m of a storage location", _poiDist], 5] call mf_notify_client;
+			[format ["You are not allowed to place a 'base locker' within %1m of other 'base lockers'", (_baseradius * 2)], 5] call mf_notify_client;
 			R3F_LOG_mutex_local_verrou = false;
+			
+		
 		};
+
 
 		_checks =
 		{
@@ -52,7 +61,7 @@ switch (_lockState) do
 			_progress = _this select 0;
 			_object = _this select 1;
 			_failed = true;
-
+			
 			switch (true) do
 			{
 				case (!alive player): { _text = "" };
@@ -60,6 +69,7 @@ switch (_lockState) do
 				case (vehicle player != player): { _text = "Action failed! You can't do this in a vehicle" };
 				case (!isNull (_object getVariable ["R3F_LOG_est_transporte_par", objNull])): { _text = "Action failed! Somebody moved the object" };
 				case (_object getVariable ["objectLocked", false]): { _text = "Somebody else locked it before you" };
+				case ([(["A3W_AJBaseRadius", 60] call getPublicVar)*2] call fn_checkBaseLock ): { _text = "You cannot lock objects close to a base under Lock Down" }; // Re Locker
 				default
 				{
 					_failed = false;
@@ -76,6 +86,10 @@ switch (_lockState) do
 		{
 			_object setVariable ["objectLocked", true, true];
 			_object setVariable ["ownerUID", getPlayerUID player, true];
+			
+			if (_object iskindof "Land_Device_assembled_F") then {
+			_object setVariable ["baseName", (format["%1's Base",name player]), true];
+			};
 
 			pvar_manualObjectSave = netId _object;
 			publicVariableServer "pvar_manualObjectSave";
@@ -134,6 +148,7 @@ switch (_lockState) do
 			_object = _this select 1;
 			_failed = true;
 
+			
 			switch (true) do
 			{
 				case (!alive player): {};
@@ -141,6 +156,7 @@ switch (_lockState) do
 				case (vehicle player != player): { _text = "Action failed! You can't do this in a vehicle" };
 				case (!isNull (_object getVariable ["R3F_LOG_est_transporte_par", objNull])): { _text = "Action failed! Somebody moved the object" };
 				case !(_object getVariable ["objectLocked", false]): { _text = "Somebody else unlocked it before you" };
+				case ([(["A3W_AJBaseRadius", 60] call getPublicVar)*2] call fn_checkBaseLock): { _text = "You cannot unlock objects close to a base under Lock Down" }; 
 				default
 				{
 					_failed = false;
@@ -159,6 +175,7 @@ switch (_lockState) do
 			_object setVariable ["ownerUID", nil, true];
 			_object setVariable ["baseSaving_hoursAlive", nil, true];
 			_object setVariable ["baseSaving_spawningTime", nil, true];
+			_object setVariable ["lockDown", nil, true];
 
 			pvar_manualObjectSave = netId _object;
 			publicVariableServer "pvar_manualObjectSave";

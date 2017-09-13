@@ -1,0 +1,28 @@
+// ******************************************************************************************
+// * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 	BadVolt 	*
+// ******************************************************************************************
+//	@file Version: 1.0
+//	@file Name: password_enter.sqf
+//	@file Author: BadVolt
+//	@file Description: Entering password and opens Door
+
+_object = cursorTarget;
+
+OutputText = nil;
+InputText = "";
+ClearText = "Enter Keycode";
+
+createDialog "AF_Keypad";
+
+waitUntil {!(isNil "OutputText")};
+
+if (OutputText == _object getVariable ["password", ""]) then {
+	execVM "addons\Door\Door_ownerMenu.sqf";
+	_uidarray = _object getVariable ["authUIDs", []];
+	_uidarray pushBack (getPlayerUID player);
+	_object setVariable ["authUIDs", _uidarray, true];
+}else{
+	["Wrong PIN!", 5] call mf_notify_client;	
+};
+
+OutputText = nil;

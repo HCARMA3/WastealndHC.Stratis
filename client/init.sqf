@@ -166,6 +166,12 @@ A3W_scriptThreads pushBack execVM "addons\fpsFix\vehicleManager.sqf";
 [] execVM "addons\camera\functions.sqf";
 [] execVM "addons\UAV_Control\functions.sqf";
 
+// StatusBar and aj checks
+if(hasInterface) then{
+//[] execVM "addons\statusBar\statusbar.sqf";
+[] execVM "addons\aj\antiglitch\aj_c_checkloop.sqf";
+};
+
 call compile preprocessFileLineNumbers "client\functions\generateAtmArray.sqf";
 [] execVM "client\functions\drawPlayerMarkers.sqf";
 

@@ -73,7 +73,10 @@ briefing = 0; // if 0, skip Continue button
 
 #include "addons\JTS_PM\PM_Compact.hpp"
 #include "addons\TOParmaInfo\dialog\TOParmaInfo_dialog.hpp"
+#include "addons\BoS\dialog\BoS_mainMenu.hpp"
+#include "addons\Safe\dialog\Safe_mainMenu.hpp"
 #include "addons\taw_vd\dialog.hpp"
+#include "addons\Door\dialog\Door_mainMenu.hpp"
 //#include "addons\taw_vd\dialog.hpp"
 #include "addons\UniformPainter\dialog\UniformPainter_mainMenu.hpp"
 #include "addons\VehiclePainter\dialog\VehiclePainter_mainMenu.hpp"
@@ -125,6 +128,12 @@ class CfgFunctions
 
 	//#include "addons\taw_vd\CfgFunctions.hpp"
 	#include "addons\CHVD\CfgFunctions.hpp"
+		//AJ Begin
+	class armajunkies
+	{
+		#include "addons\aj\aj_FunctionsDefinition.hpp"
+	};
+	//AJ End
 };
 
 class CfgNotifications

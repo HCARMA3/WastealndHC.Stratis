@@ -56,7 +56,16 @@ switch (true) do
 			["You've taken out your earplugs.", 5] call mf_notify_client;
 		};
 	};
-
+		// Z Key
+	case ( _key in actionKeys "CuratorInterface" && (getPlayerUID player in call zeusAdmins)):
+	{
+		execVM "addons\aj\zeus\refreshzeus.sqf";
+	};
+	//Numpad Enter
+	case (_key in A3W_customKeys_Switchview && !Camrunning && !(difficultyOption "thirdPersonView" > 0) && cameraOn == player):
+	{
+		execVM "addons\cameracheck\circling-cam.sqf";
+	};
 	// Emergency Eject - Del Key
 	case (_key in A3W_customKeys_eject):
 	{

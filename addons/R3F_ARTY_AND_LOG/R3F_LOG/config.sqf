@@ -184,6 +184,11 @@ R3F_LOG_CFG_transporteurs =
 
 R3F_LOG_CFG_objets_transportables =
 [
+	["Land_Device_assembled_F", 100],           //Re Locker
+	["Land_Mil_WallBig_4m_F", 10],           //Base Door (Pillbox)
+    ["Land_Canal_Wall_10m_F", 15],              //Base Door (Canal Wall)
+    ["Land_DataTerminal_01_F", 5],      //Base Door Key
+	["Box_IDAP_Equip_F", 10],                    //Safe
 	["Static_Designator_01_base_F", 2],
 	["Static_Designator_02_base_F", 2],
 	["StaticWeapon", 5],
@@ -249,6 +254,10 @@ R3F_LOG_CFG_objets_transportables =
 
 R3F_LOG_CFG_objets_deplacables =
 [
+	"Land_Device_assembled_F", //relocker
+	"Land_Mil_WallBig_4m_F",         //Base Door
+    "Land_DataTerminal_01_F",   //Base Door Key
+	"Box_IDAP_Equip_F",
 	"B_supplyCrate_F",
 	"Box_NATO_Wps_F",
 	"Box_NATO_WpsSpecial_F",

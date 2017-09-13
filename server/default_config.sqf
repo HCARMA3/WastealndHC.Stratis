@@ -111,7 +111,7 @@ PDB_PlayerFileID = "A3W_";         // Player savefile prefix (if you run multipl
 PDB_ObjectFileID = "A3W_";         // Object savefile prefix (if you run multiple servers, change it to a unique value for each server)
 
 // extDB settings
-A3W_extDB_ServerID = 1;            // Server ID to use in the database for the particular server running off this config file; if you have multiple servers, they all need different IDs
+A3W_extDB_ServerID = 2;            // Server ID to use in the database for the particular server running off this config file; if you have multiple servers, they all need different IDs
 A3W_extDB_Environment = "normal";  // Value used to separate player & object data from multiple environments running on the same map (e.g. "normal", "hardcore", "dev", etc. can be whatever you want)
 A3W_extDB_playerSaveCrossMap = 1;  // Player saves are shared across maps in same environment, with player location saved separately for each map; death resets save on all maps (0 = no, 1 = yes)
 A3W_extDB_GhostingTimer = 0;       // Number of seconds a player has to wait when switching between servers running the same map (0 = disabled)
@@ -180,6 +180,11 @@ A3W_moneyMissionDelay = 15*60;     // Time in seconds between Money Missions
 A3W_moneyMissionTimeout = 60*60;   // Time in seconds that a Money Mission will run for, unless completed
 A3W_superMissionDelay = 20*60;	   // Time in seconds between Super Missions
 A3W_superMissionTimeout = 60*60;    // Time in seconds that a Super Mission will run for, unless completed
+
+//Use Custom Armajunkies AI Skill Settings
+A3W_AJskillOverride = 1;
+A3W_AjRevealPlayersOnAiKill = 1;
+A3W_AJBaseRadius = 60;
 
 // Boxes
 A3W_SuperBoxes = ["CargoNet_01_box_F"];

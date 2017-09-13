@@ -168,6 +168,8 @@ if (isServer) then
 		"A3W_hcObjSavingID",
 		"A3W_privateStorage",
 		"A3W_privateParking",
+		"BoS_coolDownTimer",
+		"Safe_coolDownTimer",
 		"A3W_privateParkingLimit",
 		"A3W_privateParkingCost",
 		"A3W_vehicleLocking",

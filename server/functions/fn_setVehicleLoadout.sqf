@@ -23,6 +23,18 @@ private ["_mags", "_weapons", "_pylons", "_customCode"];
 // Loadouts now in modConfig\vehicleLoadouts.sqf
 call fn_vehicleLoadouts;
 
+if  (_class isKindOf "C_Plane_Civil_01_racing_F") then
+	{
+	_mags =
+			[
+				["5000Rnd_762x51_Belt", [-1]]
+			];
+	_weapons =
+			[
+				["M134_minigun", [-1]]
+			];
+	};
+
 if (isNil "_mags" && isNil "_weapons" && isNil "_pylons" && isNil "_customCode") exitWith {};
 
 // record default non-pylon weapons, so that default pylon weapons are erased
