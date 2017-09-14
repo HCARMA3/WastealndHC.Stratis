@@ -9,7 +9,7 @@
 #define PLAYER_CONDITION "(vehicle player == player && {!isNull cursorTarget})"
 #define ITEM_CONDITION "{cursortarget iskindof 'Box_IDAP_Equip_F'} && {(player distance cursortarget) < 5}"
 #define OBJECT_CONDITION "{cursorTarget getVariable ['objectLocked', false]}"
-#define HACKING_CONDITION "{'ToolKit' in (items player)} && {cursorTarget getVariable ['ownerUID',''] != getPlayerUID player}"
+#define HACKING_CONDITION "{'Land_SatellitePhone_F' in (items player)} && {cursorTarget getVariable ['ownerUID',''] != getPlayerUID player}"
 
 Safe_open = 
 {

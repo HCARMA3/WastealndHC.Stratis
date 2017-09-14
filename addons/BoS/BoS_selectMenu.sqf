@@ -9,7 +9,7 @@
 #define PLAYER_CONDITION "(vehicle player == player && {!isNull cursorTarget})"
 #define ITEM_CONDITION "{cursortarget iskindof 'Land_Device_assembled_F'} && {alive cursorTarget} && {(player distance cursortarget) < 5}"
 #define OBJECT_CONDITION "{cursorTarget getVariable ['objectLocked', false]}"
-#define NONOWNED_CONDITION "{'ToolKit' in (items player)} && {cursorTarget getVariable ['ownerUID',''] != getPlayerUID player}"
+#define NONOWNED_CONDITION "{'Land_SatellitePhone_F' in (items player)} && {cursorTarget getVariable ['ownerUID',''] != getPlayerUID player}"
 
 BoS_open = 
 {

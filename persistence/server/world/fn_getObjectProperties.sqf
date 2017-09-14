@@ -84,8 +84,6 @@ switch (true) do
 			["R3F_LOG_disabled", false]
 		];		
 	};
-
-
 	case ( _obj isKindOf "Land_DataTerminal_01_F"):
 	{
 		_variables pushBack ["password", _obj getVariable ["password", ""]];

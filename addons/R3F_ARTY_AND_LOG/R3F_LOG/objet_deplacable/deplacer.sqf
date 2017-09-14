@@ -210,6 +210,27 @@ else
 
 			player forceWalk false;
 			player selectWeapon _arme_principale;
+			
+			//aj - anti glitching
+						_baseradius = ["A3W_AJBaseRadius", 60] call getPublicVar;
+						
+						_in_rad_2 = [_baseradius * 2] call fn_checkBaseLock;
+						
+						
+						if (_in_rad_2 && !(_objet isKindOf "ReammoBox_F") && !(_objet iskindof "StaticWeapon") && !(_objet iskindof "Land_DataTerminal_01_F") ) then { 		
+							//warning range
+							systemChat "If you carry an item near a locked down base the item will be dropped and locked.";
+								_in_rad = [_baseradius] call fn_checkBaseLock;						
+								if (_in_rad) then {
+								_objet call R3F_LOG_FNCT_objet_relacher;
+								_objet setVariable ["objectLocked", true, true];
+                                    // Destroy Generator to avoid clashes with automatic lock and the base system
+									if (_objet isKindOf "Land_Device_assembled_F") then { _objet setdamage 1; };
+                                    // Delete Bunker with ladder to avoid bugusing
+                                    if ((_objet isKindOf "Land_BagBunker_Tower_F") || (_objet isKindOf "Land_HBarrier_01_tower_green_F")) then { deleteVehicle _objet; };
+								};
+						uisleep 0.5;	
+						}; 
 
 			// Restauration de l'arme primaire
 			/*if (alive player && _arme_principale != "") then
